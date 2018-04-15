@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-from xiciClass import Xici
+from GetProxy import GetProxy
 
-xici = Xici()
-xici.showIp()
+if __name__ == '__main__':
+	xici = GetProxy()
+	xici.showIp()
+	xici.save('ip.txt')
