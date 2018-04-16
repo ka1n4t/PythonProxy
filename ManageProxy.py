@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import re, os, requests
+import re, os, requests, linecache
 from UtilFunction import checkIpValid
 
 class ManageProxy:
@@ -8,9 +8,18 @@ class ManageProxy:
 	def __init__(self):
 		pass
 	
-	def findOne(self):
+	def findOne(self, filename):
 		#获取从文件中一条数据
-		pass
+		print('in')
+		with open(filename, 'a', encoding='utf-8') as file:
+			#line = file.readline()
+			#print(line)
+			print(file.read())
+			for line in file:
+				print("IN")
+				print(line)
+		#line = linecache.getline(filen)
+	
 	
 	def checkValid(self, proxy):
 	#检查代理是否有效，若无效则在相应记录后的标志位置为0
@@ -34,3 +43,4 @@ if __name__ == '__main__':
 	item = '27.40.137.108 61234 HTTP 1'
 	item = '218.72.108.38 18118 HTTP 1'
 	obj.checkValid(item)
+	obj.findOne('ip.txt')

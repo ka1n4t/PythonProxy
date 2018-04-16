@@ -29,6 +29,11 @@ class GetProxy:
 		item = re.findall(pattern, html)
 		self.ip.append(item)
 		
+	def getOne(self):
+	#获取一条数据
+	#在ManageProxy中管理
+		pass
+		
 	def showIp(self):
 	#显示已爬到的IP地址
 		print(self.ip)
