@@ -44,7 +44,7 @@ class GetProxy:
 		fullname = cur_dir+'\\'+save_name
 		with open(fullname, 'w+', encoding='utf-8') as file:
 			for value in self.ip[0]:
-				file.write(value[0]+':'+value[1]+' '+value[2]+' 0'+'\n') #0为标志位，新增ip标志为0，无效ip为-1，有效ip为1
+				file.write(value[0]+' '+value[1]+' '+value[2]+' 0'+'\n') #0为标志位，新增ip标志为0，每次检查后，若成功则置为1，若失败则置为2。下一次，若失败则置为3，到5则直接置为-1，即下次不会再检测
 	
 	def checkValid(self):
 	#检验代理是否有效
