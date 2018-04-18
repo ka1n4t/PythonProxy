@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-from ManageProxy import run as ManageRun
 from Schedule import run as ScheduleRun
+from ProxyApi import run as ApiRun
 from multiprocessing import Process
 
 def run():
 	p_list = list()
-	p1 = Process(target=ManageRun, name='ManageProxy')
+	p1 = Process(target=ScheduleRun, name='ScheduleRun')
 	p_list.append(p1)
-	p2 = Process(target=ScheduleRun, name='ScheduleRun')
+	p2 = Process(target=ApiRun, name='ApiRun')
 	p_list.append(p2)
 	
 	for p in p_list:

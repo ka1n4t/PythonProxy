@@ -3,6 +3,7 @@
 import re, os, requests, linecache, threading, time
 from UtilFunction import checkIpValid
 from GetProxy import GetProxy
+from random import choice
 
 # 对已存储的代理进行增加、验证可用性、获取
 class ManageProxy:
@@ -141,23 +142,24 @@ class ManageProxy:
 		file.seek(0)
 		data = file.readline().decode('utf-8')
 		while(data != ''):
-			flag = data[::-1][2:3]
+			data = data[:len(data)-2]
+			flag = data[len(data)-1:]
 			if(flag == '1'):
 				#有效，放入list中
 				valid_proxy.append(data)
 			data = file.readline().decode('utf-8')
 		file.close()
 		return valid_proxy
+	
+	def getRandomValidProxy(self):
+		return choice(self.getValidProxy())
 		
 	#删除相应行的记录
 	def delete(self):
 		#可直接将flag位设置为5
 		pass
 
-# 获取所有有效Proxy
-def run():
-	obj = ManageProxy()
-	print(obj.getAllProxy())
+
 		
 if __name__ == '__main__':
 	obj = ManageProxy()
