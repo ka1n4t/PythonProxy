@@ -22,6 +22,7 @@ class ManageProxy:
 			obj = GetProxy()
 			obj.getPage()
 			obj.save()
+		file.close()
 	
 	#添加新代理，不能有重复
 	def refreshProxy(self):
