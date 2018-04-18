@@ -21,17 +21,22 @@ class Schedule:
 		obj.refreshProxy()
 	
 	#执行schedule
-	def run(self):
+	def main(self):
+		print('{} Schedule Started'.format(time.strftime("%Y-%m-%d %H:%M:%S")))
 		sched = BlockingScheduler()
 		# 5min运行一次
-		sched.add_job(self.checkValid, 'interval', seconds=20, id='check_valid')
-		sched.add_job(self.refresh, 'interval', seconds=20, id='refresh_proxy')
+		sched.add_job(self.checkValid, 'interval', seconds=60, id='check_valid')
+		sched.add_job(self.refresh, 'interval', seconds=60, id='refresh_proxy')
 		sched.start()
 
-if __name__ == '__main__':
-	print('{} Schedule Started'.format(time.strftime("%Y-%m-%d %H:%M:%S")))
+#执行schedule
+def run():
 	obj = Schedule()
-	obj.run()
+	obj.main()
+		
+if __name__ == '__main__':
+	obj = Schedule()
+	obj.main()
 	#obj.checkValid()
 	#obj.refresh()
 	#print('{} Schedule Ended'.format(time.strftime("%Y-%m-%d %H:%M:%S")))

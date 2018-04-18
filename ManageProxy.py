@@ -153,6 +153,11 @@ class ManageProxy:
 	def delete(self):
 		#可直接将flag位设置为5
 		pass
+
+# 获取所有有效Proxy
+def run():
+	obj = ManageProxy()
+	print(obj.getAllProxy())
 		
 if __name__ == '__main__':
 	obj = ManageProxy()
