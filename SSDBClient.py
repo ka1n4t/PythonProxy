@@ -13,23 +13,30 @@ class SSDBClient:
 
 	#返回所有记录
 	def getAll(self):
-		pass
+		return self.db.hgetall(self.tablename)
 		
 	#查询一条记录
 	def get(self, key):
 		self.db.hget(self.tablename, key)
 	
 	#删除一条记录
-	def delete(self, key):
-		pass
+	def delete(self, tablename, key):
+		return self.db.hdel(tablename, key)
 		
 	#修改一条记录
-	def update(self, key, value):
+	def update(self, tablename, key, value):
+		return self.db.hset(tablename, key, value)
+	
+	#按序弹出记录
+	def pop(self, tablename):
 		pass
 	
 	#返回当前表名
 	def getTableName(self):
 		return self.tablename
+	
+	def isKeyExists(self, keyname):
+		return self.db.hexists(name=self.tablename, key=keyname)
 	
 	#修改表名
 	def changeTable(self, tablename):
